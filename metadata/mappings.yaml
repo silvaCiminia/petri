@@ -1,0 +1,42 @@
+# Metadata mapping
+# Entries must be formatted as follows:
+#
+# PythonClassName0:
+#   db_class: DbClassName
+#   py_property0: db_property0
+#   py_property1: db_property1
+#   .
+#   .
+#   .
+# PythonClassName1:
+#   .
+#   .
+#   .
+#
+# Example:
+#
+# SampleClass:
+#   ^--Python class name, case-sensitive. Required for all items.
+#
+#   db_class: DbSampleClass
+#               ^--Name of the matching db type in the entities file. If not
+#                provided, we will attempt to find a type in the entities file
+#                that matches the python class name
+#
+#   py_property0: db_property0
+#                   ^--Mapping of python object properties to db object
+#                    properties. If a property is not included in this metadata,
+#                    we will try to match it to a db object property by name.
+#                    All python object properties (other than id) must be
+#                    matched in one of these two ways.
+
+db_name: 'petriDB' # Required. Can be an absolute path
+
+Session:
+  # Required session object
+  db_class: Session
+  skip: [item_dict]
+  name: name
+
+PetriClass:
+  db_class: Entity
